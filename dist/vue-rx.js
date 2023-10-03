@@ -1,38 +1,35 @@
-let F, I = function() {
+let ee = function() {
 };
-function de(e) {
-  F = e, I = F.util.warn || I;
-}
-function he(e) {
+function le(e) {
   return e && typeof e.subscribe == "function";
 }
-function L(e) {
+function C(e) {
   return e && typeof e.next == "function";
 }
-function ve(e, t, r) {
-  t in e ? e[t] = r : F.util.defineReactive(e, t, r);
+function de(e, t, r) {
+  t in e && (e[t] = r);
 }
-function R(e) {
+function L(e) {
   return [e.arg].concat(Object.keys(e.modifiers)).join(":");
 }
-var Y = function(e, t) {
-  return Y = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(r, n) {
+var D = function(e, t) {
+  return D = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(r, n) {
     r.__proto__ = n;
   } || function(r, n) {
     for (var o in n)
       Object.prototype.hasOwnProperty.call(n, o) && (r[o] = n[o]);
-  }, Y(e, t);
+  }, D(e, t);
 };
-function $(e, t) {
+function P(e, t) {
   if (typeof t != "function" && t !== null)
     throw new TypeError("Class extends value " + String(t) + " is not a constructor or null");
-  Y(e, t);
+  D(e, t);
   function r() {
     this.constructor = e;
   }
   e.prototype = t === null ? Object.create(t) : (r.prototype = t.prototype, new r());
 }
-function pe(e, t, r, n) {
+function he(e, t, r, n) {
   function o(i) {
     return i instanceof r ? i : new r(function(s) {
       s(i);
@@ -59,7 +56,7 @@ function pe(e, t, r, n) {
     c((n = n.apply(e, t || [])).next());
   });
 }
-function te(e, t) {
+function re(e, t) {
   var r = { label: 0, sent: function() {
     if (i[0] & 1)
       throw i[1];
@@ -124,7 +121,7 @@ function te(e, t) {
     return { value: c[0] ? c[1] : void 0, done: !0 };
   }
 }
-function g(e) {
+function _(e) {
   var t = typeof Symbol == "function" && Symbol.iterator, r = t && e[t], n = 0;
   if (r)
     return r.call(e);
@@ -162,10 +159,10 @@ function O(e, t, r) {
       (i || !(n in t)) && (i || (i = Array.prototype.slice.call(t, 0, n)), i[n] = t[n]);
   return e.concat(i || Array.prototype.slice.call(t));
 }
-function _(e) {
-  return this instanceof _ ? (this.v = e, this) : new _(e);
+function x(e) {
+  return this instanceof x ? (this.v = e, this) : new x(e);
 }
-function be(e, t, r) {
+function ve(e, t, r) {
   if (!Symbol.asyncIterator)
     throw new TypeError("Symbol.asyncIterator is not defined.");
   var n = r.apply(e, t || []), o, i = [];
@@ -187,7 +184,7 @@ function be(e, t, r) {
     }
   }
   function a(l) {
-    l.value instanceof _ ? Promise.resolve(l.value.v).then(c, f) : d(i[0][2], l);
+    l.value instanceof x ? Promise.resolve(l.value.v).then(c, f) : d(i[0][2], l);
   }
   function c(l) {
     u("next", l);
@@ -199,11 +196,11 @@ function be(e, t, r) {
     l(p), i.shift(), i.length && u(i[0][0], i[0][1]);
   }
 }
-function ye(e) {
+function pe(e) {
   if (!Symbol.asyncIterator)
     throw new TypeError("Symbol.asyncIterator is not defined.");
   var t = e[Symbol.asyncIterator], r;
-  return t ? t.call(e) : (e = typeof g == "function" ? g(e) : e[Symbol.iterator](), r = {}, n("next"), n("throw"), n("return"), r[Symbol.asyncIterator] = function() {
+  return t ? t.call(e) : (e = typeof _ == "function" ? _(e) : e[Symbol.iterator](), r = {}, n("next"), n("throw"), n("return"), r[Symbol.asyncIterator] = function() {
     return this;
   }, r);
   function n(i) {
@@ -222,13 +219,13 @@ function ye(e) {
 function v(e) {
   return typeof e == "function";
 }
-function ne(e) {
+function te(e) {
   var t = function(n) {
     Error.call(n), n.stack = new Error().stack;
   }, r = e(t);
   return r.prototype = Object.create(Error.prototype), r.prototype.constructor = r, r;
 }
-var U = ne(function(e) {
+var R = te(function(e) {
   return function(r) {
     e(this), this.message = r ? r.length + ` errors occurred during unsubscription:
 ` + r.map(function(n, o) {
@@ -237,7 +234,7 @@ var U = ne(function(e) {
   `) : "", this.name = "UnsubscriptionError", this.errors = r;
   };
 });
-function G(e, t) {
+function F(e, t) {
   if (e) {
     var r = e.indexOf(t);
     0 <= r && e.splice(r, 1);
@@ -255,7 +252,7 @@ var w = function() {
       if (s)
         if (this._parentage = null, Array.isArray(s))
           try {
-            for (var u = g(s), a = u.next(); !a.done; a = u.next()) {
+            for (var u = _(s), a = u.next(); !a.done; a = u.next()) {
               var c = a.value;
               c.remove(this);
             }
@@ -276,18 +273,18 @@ var w = function() {
         try {
           f();
         } catch (h) {
-          i = h instanceof U ? h.errors : [h];
+          i = h instanceof R ? h.errors : [h];
         }
       var d = this._finalizers;
       if (d) {
         this._finalizers = null;
         try {
-          for (var l = g(d), p = l.next(); !p.done; p = l.next()) {
+          for (var l = _(d), p = l.next(); !p.done; p = l.next()) {
             var b = p.value;
             try {
-              V(b);
+              X(b);
             } catch (h) {
-              i = i ?? [], h instanceof U ? i = O(O([], E(i)), E(h.errors)) : i.push(h);
+              i = i ?? [], h instanceof R ? i = O(O([], E(i)), E(h.errors)) : i.push(h);
             }
           }
         } catch (h) {
@@ -302,13 +299,13 @@ var w = function() {
         }
       }
       if (i)
-        throw new U(i);
+        throw new R(i);
     }
   }, e.prototype.add = function(t) {
     var r;
     if (t && t !== this)
       if (this.closed)
-        V(t);
+        X(t);
       else {
         if (t instanceof e) {
           if (t.closed || t._hasParent(this))
@@ -325,58 +322,58 @@ var w = function() {
     this._parentage = Array.isArray(r) ? (r.push(t), r) : r ? [r, t] : t;
   }, e.prototype._removeParent = function(t) {
     var r = this._parentage;
-    r === t ? this._parentage = null : Array.isArray(r) && G(r, t);
+    r === t ? this._parentage = null : Array.isArray(r) && F(r, t);
   }, e.prototype.remove = function(t) {
     var r = this._finalizers;
-    r && G(r, t), t instanceof e && t._removeParent(this);
+    r && F(r, t), t instanceof e && t._removeParent(this);
   }, e.EMPTY = function() {
     var t = new e();
     return t.closed = !0, t;
   }(), e;
-}(), oe = w.EMPTY;
-function ie(e) {
+}(), ne = w.EMPTY;
+function oe(e) {
   return e instanceof w || e && "closed" in e && v(e.remove) && v(e.add) && v(e.unsubscribe);
 }
-function V(e) {
+function X(e) {
   v(e) ? e() : e.unsubscribe();
 }
-var se = {
+var ie = {
   onUnhandledError: null,
   onStoppedNotification: null,
   Promise: void 0,
   useDeprecatedSynchronousErrorHandling: !1,
   useDeprecatedNextContext: !1
-}, q = {
+}, Y = {
   setTimeout: function(e, t) {
     for (var r = [], n = 2; n < arguments.length; n++)
       r[n - 2] = arguments[n];
-    var o = q.delegate;
+    var o = Y.delegate;
     return o != null && o.setTimeout ? o.setTimeout.apply(o, O([e, t], E(r))) : setTimeout.apply(void 0, O([e, t], E(r)));
   },
   clearTimeout: function(e) {
-    var t = q.delegate;
+    var t = Y.delegate;
     return ((t == null ? void 0 : t.clearTimeout) || clearTimeout)(e);
   },
   delegate: void 0
 };
-function ue(e) {
-  q.setTimeout(function() {
+function se(e) {
+  Y.setTimeout(function() {
     throw e;
   });
 }
-function Z() {
+function G() {
 }
-function C(e) {
+function k(e) {
   e();
 }
-var Q = function(e) {
-  $(t, e);
+var J = function(e) {
+  P(t, e);
   function t(r) {
     var n = e.call(this) || this;
-    return n.isStopped = !1, r ? (n.destination = r, ie(r) && r.add(n)) : n.destination = Ee, n;
+    return n.isStopped = !1, r ? (n.destination = r, oe(r) && r.add(n)) : n.destination = we, n;
   }
   return t.create = function(r, n, o) {
-    return new T(r, n, o);
+    return new I(r, n, o);
   }, t.prototype.next = function(r) {
     this.isStopped || this._next(r);
   }, t.prototype.error = function(r) {
@@ -400,11 +397,11 @@ var Q = function(e) {
       this.unsubscribe();
     }
   }, t;
-}(w), me = Function.prototype.bind;
-function H(e, t) {
-  return me.call(e, t);
+}(w), be = Function.prototype.bind;
+function U(e, t) {
+  return be.call(e, t);
 }
-var we = function() {
+var ye = function() {
   function e(t) {
     this.partialObserver = t;
   }
@@ -414,7 +411,7 @@ var we = function() {
       try {
         r.next(t);
       } catch (n) {
-        k(n);
+        M(n);
       }
   }, e.prototype.error = function(t) {
     var r = this.partialObserver;
@@ -422,21 +419,21 @@ var we = function() {
       try {
         r.error(t);
       } catch (n) {
-        k(n);
+        M(n);
       }
     else
-      k(t);
+      M(t);
   }, e.prototype.complete = function() {
     var t = this.partialObserver;
     if (t.complete)
       try {
         t.complete();
       } catch (r) {
-        k(r);
+        M(r);
       }
   }, e;
-}(), T = function(e) {
-  $(t, e);
+}(), I = function(e) {
+  P(t, e);
   function t(r, n, o) {
     var i = e.call(this) || this, s;
     if (v(r) || !r)
@@ -447,37 +444,37 @@ var we = function() {
       };
     else {
       var u;
-      i && se.useDeprecatedNextContext ? (u = Object.create(r), u.unsubscribe = function() {
+      i && ie.useDeprecatedNextContext ? (u = Object.create(r), u.unsubscribe = function() {
         return i.unsubscribe();
       }, s = {
-        next: r.next && H(r.next, u),
-        error: r.error && H(r.error, u),
-        complete: r.complete && H(r.complete, u)
+        next: r.next && U(r.next, u),
+        error: r.error && U(r.error, u),
+        complete: r.complete && U(r.complete, u)
       }) : s = r;
     }
-    return i.destination = new we(s), i;
+    return i.destination = new ye(s), i;
   }
   return t;
-}(Q);
-function k(e) {
-  ue(e);
+}(J);
+function M(e) {
+  se(e);
 }
-function Se(e) {
+function me(e) {
   throw e;
 }
-var Ee = {
+var we = {
   closed: !0,
-  next: Z,
-  error: Se,
-  complete: Z
-}, B = function() {
+  next: G,
+  error: me,
+  complete: G
+}, K = function() {
   return typeof Symbol == "function" && Symbol.observable || "@@observable";
 }();
-function xe(e) {
+function Se(e) {
   return e;
 }
-function _e(e) {
-  return e.length === 0 ? xe : e.length === 1 ? e[0] : function(r) {
+function Ee(e) {
+  return e.length === 0 ? Se : e.length === 1 ? e[0] : function(r) {
     return e.reduce(function(n, o) {
       return o(n);
     }, r);
@@ -491,8 +488,8 @@ var y = function() {
     var r = new e();
     return r.source = this, r.operator = t, r;
   }, e.prototype.subscribe = function(t, r, n) {
-    var o = this, i = Oe(t) ? t : new T(t, r, n);
-    return C(function() {
+    var o = this, i = xe(t) ? t : new I(t, r, n);
+    return k(function() {
       var s = o, u = s.operator, a = s.source;
       i.add(u ? u.call(i, a) : a ? o._subscribe(i) : o._trySubscribe(i));
     }), i;
@@ -504,8 +501,8 @@ var y = function() {
     }
   }, e.prototype.forEach = function(t, r) {
     var n = this;
-    return r = N(r), new r(function(o, i) {
-      var s = new T({
+    return r = z(r), new r(function(o, i) {
+      var s = new I({
         next: function(u) {
           try {
             t(u);
@@ -521,15 +518,15 @@ var y = function() {
   }, e.prototype._subscribe = function(t) {
     var r;
     return (r = this.source) === null || r === void 0 ? void 0 : r.subscribe(t);
-  }, e.prototype[B] = function() {
+  }, e.prototype[K] = function() {
     return this;
   }, e.prototype.pipe = function() {
     for (var t = [], r = 0; r < arguments.length; r++)
       t[r] = arguments[r];
-    return _e(t)(this);
+    return Ee(t)(this);
   }, e.prototype.toPromise = function(t) {
     var r = this;
-    return t = N(t), new t(function(n, o) {
+    return t = z(t), new t(function(n, o) {
       var i;
       r.subscribe(function(s) {
         return i = s;
@@ -543,22 +540,22 @@ var y = function() {
     return new e(t);
   }, e;
 }();
-function N(e) {
+function z(e) {
   var t;
-  return (t = e ?? se.Promise) !== null && t !== void 0 ? t : Promise;
+  return (t = e ?? ie.Promise) !== null && t !== void 0 ? t : Promise;
 }
 function ge(e) {
   return e && v(e.next) && v(e.error) && v(e.complete);
 }
-function Oe(e) {
-  return e && e instanceof Q || ge(e) && ie(e);
+function xe(e) {
+  return e && e instanceof J || ge(e) && oe(e);
 }
-function Ae(e) {
+function _e(e) {
   return v(e == null ? void 0 : e.lift);
 }
-function W(e) {
+function Q(e) {
   return function(t) {
-    if (Ae(t))
+    if (_e(t))
       return t.lift(function(r) {
         try {
           return e(r, this);
@@ -569,11 +566,11 @@ function W(e) {
     throw new TypeError("Unable to lift unknown Observable type");
   };
 }
-function J(e, t, r, n, o) {
-  return new Ie(e, t, r, n, o);
+function q(e, t, r, n, o) {
+  return new Oe(e, t, r, n, o);
 }
-var Ie = function(e) {
-  $(t, e);
+var Oe = function(e) {
+  P(t, e);
   function t(r, n, o, i, s, u) {
     var a = e.call(this, r) || this;
     return a.onFinalize = s, a.shouldUnsubscribe = u, a._next = n ? function(c) {
@@ -607,30 +604,30 @@ var Ie = function(e) {
       e.prototype.unsubscribe.call(this), !n && ((r = this.onFinalize) === null || r === void 0 || r.call(this));
     }
   }, t;
-}(Q), Te = ne(function(e) {
+}(J), Ae = te(function(e) {
   return function() {
     e(this), this.name = "ObjectUnsubscribedError", this.message = "object unsubscribed";
   };
-}), X = function(e) {
-  $(t, e);
+}), B = function(e) {
+  P(t, e);
   function t() {
     var r = e.call(this) || this;
     return r.closed = !1, r.currentObservers = null, r.observers = [], r.isStopped = !1, r.hasError = !1, r.thrownError = null, r;
   }
   return t.prototype.lift = function(r) {
-    var n = new ee(this, this);
+    var n = new V(this, this);
     return n.operator = r, n;
   }, t.prototype._throwIfClosed = function() {
     if (this.closed)
-      throw new Te();
+      throw new Ae();
   }, t.prototype.next = function(r) {
     var n = this;
-    C(function() {
+    k(function() {
       var o, i;
       if (n._throwIfClosed(), !n.isStopped) {
         n.currentObservers || (n.currentObservers = Array.from(n.observers));
         try {
-          for (var s = g(n.currentObservers), u = s.next(); !u.done; u = s.next()) {
+          for (var s = _(n.currentObservers), u = s.next(); !u.done; u = s.next()) {
             var a = u.value;
             a.next(r);
           }
@@ -648,7 +645,7 @@ var Ie = function(e) {
     });
   }, t.prototype.error = function(r) {
     var n = this;
-    C(function() {
+    k(function() {
       if (n._throwIfClosed(), !n.isStopped) {
         n.hasError = n.isStopped = !0, n.thrownError = r;
         for (var o = n.observers; o.length; )
@@ -657,7 +654,7 @@ var Ie = function(e) {
     });
   }, t.prototype.complete = function() {
     var r = this;
-    C(function() {
+    k(function() {
       if (r._throwIfClosed(), !r.isStopped) {
         r.isStopped = !0;
         for (var n = r.observers; n.length; )
@@ -679,8 +676,8 @@ var Ie = function(e) {
     return this._throwIfClosed(), this._checkFinalizedStatuses(r), this._innerSubscribe(r);
   }, t.prototype._innerSubscribe = function(r) {
     var n = this, o = this, i = o.hasError, s = o.isStopped, u = o.observers;
-    return i || s ? oe : (this.currentObservers = null, u.push(r), new w(function() {
-      n.currentObservers = null, G(u, r);
+    return i || s ? ne : (this.currentObservers = null, u.push(r), new w(function() {
+      n.currentObservers = null, F(u, r);
     }));
   }, t.prototype._checkFinalizedStatuses = function(r) {
     var n = this, o = n.hasError, i = n.thrownError, s = n.isStopped;
@@ -689,10 +686,10 @@ var Ie = function(e) {
     var r = new y();
     return r.source = this, r;
   }, t.create = function(r, n) {
-    return new ee(r, n);
+    return new V(r, n);
   }, t;
-}(y), ee = function(e) {
-  $(t, e);
+}(y), V = function(e) {
+  P(t, e);
   function t(r, n) {
     var o = e.call(this) || this;
     return o.destination = r, o.source = n, o;
@@ -708,47 +705,47 @@ var Ie = function(e) {
     (n = (r = this.destination) === null || r === void 0 ? void 0 : r.complete) === null || n === void 0 || n.call(r);
   }, t.prototype._subscribe = function(r) {
     var n, o;
-    return (o = (n = this.source) === null || n === void 0 ? void 0 : n.subscribe(r)) !== null && o !== void 0 ? o : oe;
+    return (o = (n = this.source) === null || n === void 0 ? void 0 : n.subscribe(r)) !== null && o !== void 0 ? o : ne;
   }, t;
-}(X), ce = function(e) {
+}(B), ue = function(e) {
   return e && typeof e.length == "number" && typeof e != "function";
 };
-function $e(e) {
+function Ie(e) {
   return v(e == null ? void 0 : e.then);
 }
-function je(e) {
-  return v(e[B]);
-}
 function Pe(e) {
+  return v(e[K]);
+}
+function Te(e) {
   return Symbol.asyncIterator && v(e == null ? void 0 : e[Symbol.asyncIterator]);
 }
-function Me(e) {
+function je(e) {
   return new TypeError("You provided " + (e !== null && typeof e == "object" ? "an invalid object" : "'" + e + "'") + " where a stream was expected. You can provide an Observable, Promise, ReadableStream, Array, AsyncIterable, or Iterable.");
 }
-function ke() {
+function $e() {
   return typeof Symbol != "function" || !Symbol.iterator ? "@@iterator" : Symbol.iterator;
 }
-var Ce = ke();
-function Le(e) {
-  return v(e == null ? void 0 : e[Ce]);
+var Me = $e();
+function ke(e) {
+  return v(e == null ? void 0 : e[Me]);
 }
-function Re(e) {
-  return be(this, arguments, function() {
+function Ce(e) {
+  return ve(this, arguments, function() {
     var r, n, o, i;
-    return te(this, function(s) {
+    return re(this, function(s) {
       switch (s.label) {
         case 0:
           r = e.getReader(), s.label = 1;
         case 1:
           s.trys.push([1, , 9, 10]), s.label = 2;
         case 2:
-          return [4, _(r.read())];
+          return [4, x(r.read())];
         case 3:
-          return n = s.sent(), o = n.value, i = n.done, i ? [4, _(void 0)] : [3, 5];
+          return n = s.sent(), o = n.value, i = n.done, i ? [4, x(void 0)] : [3, 5];
         case 4:
           return [2, s.sent()];
         case 5:
-          return [4, _(o)];
+          return [4, x(o)];
         case 6:
           return [4, s.sent()];
         case 7:
@@ -763,57 +760,57 @@ function Re(e) {
     });
   });
 }
-function Ue(e) {
+function Le(e) {
   return v(e == null ? void 0 : e.getReader);
 }
-function j(e) {
+function T(e) {
   if (e instanceof y)
     return e;
   if (e != null) {
-    if (je(e))
-      return He(e);
-    if (ce(e))
-      return De(e);
-    if ($e(e))
-      return Fe(e);
     if (Pe(e))
-      return ae(e);
+      return Re(e);
+    if (ue(e))
+      return Ue(e);
+    if (Ie(e))
+      return He(e);
+    if (Te(e))
+      return ce(e);
+    if (ke(e))
+      return De(e);
     if (Le(e))
-      return Ye(e);
-    if (Ue(e))
-      return Ge(e);
+      return Fe(e);
   }
-  throw Me(e);
+  throw je(e);
 }
-function He(e) {
+function Re(e) {
   return new y(function(t) {
-    var r = e[B]();
+    var r = e[K]();
     if (v(r.subscribe))
       return r.subscribe(t);
     throw new TypeError("Provided object does not correctly implement Symbol.observable");
   });
 }
-function De(e) {
+function Ue(e) {
   return new y(function(t) {
     for (var r = 0; r < e.length && !t.closed; r++)
       t.next(e[r]);
     t.complete();
   });
 }
-function Fe(e) {
+function He(e) {
   return new y(function(t) {
     e.then(function(r) {
       t.closed || (t.next(r), t.complete());
     }, function(r) {
       return t.error(r);
-    }).then(null, ue);
+    }).then(null, se);
   });
 }
-function Ye(e) {
+function De(e) {
   return new y(function(t) {
     var r, n;
     try {
-      for (var o = g(e), i = o.next(); !i.done; i = o.next()) {
+      for (var o = _(e), i = o.next(); !i.done; i = o.next()) {
         var s = i.value;
         if (t.next(s), t.closed)
           return;
@@ -831,24 +828,24 @@ function Ye(e) {
     t.complete();
   });
 }
-function ae(e) {
+function ce(e) {
   return new y(function(t) {
-    qe(e, t).catch(function(r) {
+    Ye(e, t).catch(function(r) {
       return t.error(r);
     });
   });
 }
-function Ge(e) {
-  return ae(Re(e));
+function Fe(e) {
+  return ce(Ce(e));
 }
-function qe(e, t) {
+function Ye(e, t) {
   var r, n, o, i;
-  return pe(this, void 0, void 0, function() {
+  return he(this, void 0, void 0, function() {
     var s, u;
-    return te(this, function(a) {
+    return re(this, function(a) {
       switch (a.label) {
         case 0:
-          a.trys.push([0, 5, 6, 11]), r = ye(e), a.label = 1;
+          a.trys.push([0, 5, 6, 11]), r = pe(e), a.label = 1;
         case 1:
           return [4, r.next()];
         case 2:
@@ -881,7 +878,7 @@ function qe(e, t) {
     });
   });
 }
-function Ze(e, t, r, n, o) {
+function Ge(e, t, r, n, o) {
   n === void 0 && (n = 0), o === void 0 && (o = !1);
   var i = t.schedule(function() {
     r(), o ? e.add(this.schedule(null, n)) : this.unsubscribe();
@@ -889,24 +886,24 @@ function Ze(e, t, r, n, o) {
   if (e.add(i), !o)
     return i;
 }
-function fe(e, t) {
-  return W(function(r, n) {
+function ae(e, t) {
+  return Q(function(r, n) {
     var o = 0;
-    r.subscribe(J(n, function(i) {
+    r.subscribe(q(n, function(i) {
       n.next(e.call(t, i, o++));
     }));
   });
 }
-var Je = Array.isArray;
-function Ke(e, t) {
-  return Je(t) ? e.apply(void 0, O([], E(t))) : e(t);
+var qe = Array.isArray;
+function Ze(e, t) {
+  return qe(t) ? e.apply(void 0, O([], E(t))) : e(t);
 }
-function Qe(e) {
-  return fe(function(t) {
-    return Ke(e, t);
+function Je(e) {
+  return ae(function(t) {
+    return Ze(e, t);
   });
 }
-function Be(e, t, r, n, o, i, s, u) {
+function Ke(e, t, r, n, o, i, s, u) {
   var a = [], c = 0, f = 0, d = !1, l = function() {
     d && !a.length && !c && t.complete();
   }, p = function(h) {
@@ -914,7 +911,7 @@ function Be(e, t, r, n, o, i, s, u) {
   }, b = function(h) {
     i && t.next(h), c++;
     var S = !1;
-    j(r(h, f++)).subscribe(J(t, function(m) {
+    T(r(h, f++)).subscribe(q(t, function(m) {
       o == null || o(m), i ? p(m) : t.next(m);
     }, function() {
       S = !0;
@@ -923,46 +920,46 @@ function Be(e, t, r, n, o, i, s, u) {
         try {
           c--;
           for (var m = function() {
-            var x = a.shift();
-            s ? Ze(t, s, function() {
-              return b(x);
-            }) : b(x);
+            var g = a.shift();
+            s ? Ge(t, s, function() {
+              return b(g);
+            }) : b(g);
           }; a.length && c < n; )
             m();
           l();
-        } catch (x) {
-          t.error(x);
+        } catch (g) {
+          t.error(g);
         }
     }));
   };
-  return e.subscribe(J(t, p, function() {
+  return e.subscribe(q(t, p, function() {
     d = !0, l();
   })), function() {
     u == null || u();
   };
 }
-function le(e, t, r) {
-  return r === void 0 && (r = 1 / 0), v(t) ? le(function(n, o) {
-    return fe(function(i, s) {
+function fe(e, t, r) {
+  return r === void 0 && (r = 1 / 0), v(t) ? fe(function(n, o) {
+    return ae(function(i, s) {
       return t(n, i, o, s);
-    })(j(e(n, o)));
-  }, r) : (typeof t == "number" && (r = t), W(function(n, o) {
-    return Be(n, o, e, r);
+    })(T(e(n, o)));
+  }, r) : (typeof t == "number" && (r = t), Q(function(n, o) {
+    return Ke(n, o, e, r);
   }));
 }
-var We = ["addListener", "removeListener"], Xe = ["addEventListener", "removeEventListener"], ze = ["on", "off"];
-function K(e, t, r, n) {
+var Qe = ["addListener", "removeListener"], Be = ["addEventListener", "removeEventListener"], We = ["on", "off"];
+function Z(e, t, r, n) {
   if (v(r) && (n = r, r = void 0), n)
-    return K(e, t, r).pipe(Qe(n));
-  var o = E(er(e) ? Xe.map(function(u) {
+    return Z(e, t, r).pipe(Je(n));
+  var o = E(Ve(e) ? Be.map(function(u) {
     return function(a) {
       return e[u](t, a, r);
     };
-  }) : Ve(e) ? We.map(re(e, t)) : Ne(e) ? ze.map(re(e, t)) : [], 2), i = o[0], s = o[1];
-  if (!i && ce(e))
-    return le(function(u) {
-      return K(u, t, r);
-    })(j(e));
+  }) : Xe(e) ? Qe.map(N(e, t)) : ze(e) ? We.map(N(e, t)) : [], 2), i = o[0], s = o[1];
+  if (!i && ue(e))
+    return fe(function(u) {
+      return Z(u, t, r);
+    })(T(e));
   if (!i)
     throw new TypeError("Invalid event target");
   return new y(function(u) {
@@ -976,57 +973,57 @@ function K(e, t, r, n) {
     };
   });
 }
-function re(e, t) {
+function N(e, t) {
   return function(r) {
     return function(n) {
       return e[r](t, n);
     };
   };
 }
-function Ve(e) {
+function Xe(e) {
   return v(e.addListener) && v(e.removeListener);
 }
-function Ne(e) {
+function ze(e) {
   return v(e.on) && v(e.off);
 }
-function er(e) {
+function Ve(e) {
   return v(e.addEventListener) && v(e.removeEventListener);
 }
-var rr = new y(Z);
-function tr(e) {
+var Ne = new y(G);
+function er(e) {
   e === void 0 && (e = {});
   var t = e.connector, r = t === void 0 ? function() {
-    return new X();
+    return new B();
   } : t, n = e.resetOnError, o = n === void 0 ? !0 : n, i = e.resetOnComplete, s = i === void 0 ? !0 : i, u = e.resetOnRefCountZero, a = u === void 0 ? !0 : u;
   return function(c) {
     var f, d, l, p = 0, b = !1, h = !1, S = function() {
       d == null || d.unsubscribe(), d = void 0;
     }, m = function() {
       S(), f = l = void 0, b = h = !1;
-    }, x = function() {
+    }, g = function() {
       var A = f;
       m(), A == null || A.unsubscribe();
     };
-    return W(function(A, z) {
+    return Q(function(A, W) {
       p++, !h && !b && S();
-      var P = l = l ?? r();
-      z.add(function() {
-        p--, p === 0 && !h && !b && (d = D(x, a));
-      }), P.subscribe(z), !f && p > 0 && (f = new T({
-        next: function(M) {
-          return P.next(M);
+      var j = l = l ?? r();
+      W.add(function() {
+        p--, p === 0 && !h && !b && (d = H(g, a));
+      }), j.subscribe(W), !f && p > 0 && (f = new I({
+        next: function($) {
+          return j.next($);
         },
-        error: function(M) {
-          h = !0, S(), d = D(m, o, M), P.error(M);
+        error: function($) {
+          h = !0, S(), d = H(m, o, $), j.error($);
         },
         complete: function() {
-          b = !0, S(), d = D(m, s), P.complete();
+          b = !0, S(), d = H(m, s), j.complete();
         }
-      }), j(A).subscribe(f));
+      }), T(A).subscribe(f));
     })(c);
   };
 }
-function D(e, t) {
+function H(e, t) {
   for (var r = [], n = 2; n < arguments.length; n++)
     r[n - 2] = arguments[n];
   if (t === !0) {
@@ -1034,19 +1031,19 @@ function D(e, t) {
     return;
   }
   if (t !== !1) {
-    var o = new T({
+    var o = new I({
       next: function() {
         o.unsubscribe(), e();
       }
     });
-    return j(t.apply(void 0, O([], E(r)))).subscribe(o);
+    return T(t.apply(void 0, O([], E(r)))).subscribe(o);
   }
 }
-const nr = {
+const rr = {
   created() {
     const e = this, t = e.$options.domStreams;
     t && t.forEach((o) => {
-      e[o] = new X();
+      e[o] = new B();
     });
     const r = e.$options.observableMethods;
     r && (Array.isArray(r) ? r.forEach((o) => {
@@ -1056,16 +1053,9 @@ const nr = {
     }));
     let n = e.$options.subscriptions;
     typeof n == "function" && (n = n.call(e)), n && (e.$observables = {}, e._subscription = new w(), Object.keys(n).forEach((o) => {
-      ve(e, o, void 0);
+      de(e, o, void 0);
       const i = e.$observables[o] = n[o];
-      if (!he(i)) {
-        I(
-          'Invalid Observable found in subscriptions option with key "' + o + '".',
-          e
-        );
-        return;
-      }
-      e._subscription.add(n[o].subscribe((s) => {
+      le(i) && e._subscription.add(n[o].subscribe((s) => {
         e[o] = s;
       }, (s) => {
         throw s;
@@ -1078,15 +1068,15 @@ const nr = {
   beforeDestroy() {
     this._subscription && this._subscription.unsubscribe();
   }
-}, or = {
+}, tr = {
   // Example ./example/counter_dir.html
   bind(e, t, r) {
     let n = t.value;
     const o = t.arg, i = t.expression, s = t.modifiers;
-    if (L(n))
+    if (C(n))
       n = { subject: n };
-    else if (!n || !L(n.subject)) {
-      I(
+    else if (!n || !C(n.subject)) {
+      ee(
         'Invalid Subject found in directive with key "' + i + '".' + i + " should be an instance of Subject or have the type { subject: Subject, data: any }.",
         r.context
       );
@@ -1109,25 +1099,25 @@ const nr = {
       });
     else {
       const d = n.options ? [e, o, n.options] : [e, o];
-      n.subscription = K(...d).subscribe((l) => {
+      n.subscription = Z(...d).subscribe((l) => {
         a.forEach((p) => u[p](l)), f({
           event: l,
           data: n.data
         });
       });
     }
-    (e._rxHandles || (e._rxHandles = {}))[R(t)] = n;
+    (e._rxHandles || (e._rxHandles = {}))[L(t)] = n;
   },
   update(e, t) {
-    const r = t.value, n = e._rxHandles && e._rxHandles[R(t)];
-    n && r && L(r.subject) && (n.data = r.data);
+    const r = t.value, n = e._rxHandles && e._rxHandles[L(t)];
+    n && r && C(r.subject) && (n.data = r.data);
   },
   unbind(e, t) {
-    const r = R(t), n = e._rxHandles && e._rxHandles[r];
+    const r = L(t), n = e._rxHandles && e._rxHandles[r];
     n && (n.subscription && n.subscription.unsubscribe(), e._rxHandles[r] = null);
   }
 };
-function ir(e, t) {
+function nr(e, t) {
   const r = this;
   return new y((o) => {
     let i;
@@ -1141,9 +1131,9 @@ function ir(e, t) {
     });
   });
 }
-function sr(e, t) {
+function or(e, t) {
   if (typeof window > "u")
-    return rr;
+    return Ne;
   const r = this, n = document.documentElement;
   return new y((i) => {
     function s(u) {
@@ -1160,11 +1150,11 @@ function sr(e, t) {
     });
   });
 }
-function ur(e, ...t) {
+function ir(e, ...t) {
   const r = e.subscribe(...t);
   return (this._subscription || (this._subscription = new w())).add(r), r;
 }
-function cr(e) {
+function sr(e) {
   const t = this, r = Array.isArray(e) ? e : [e];
   return new y((o) => {
     const i = r.map((s) => {
@@ -1176,11 +1166,10 @@ function cr(e) {
     };
   });
 }
-function ar(e, t) {
+function ur(e, t) {
   const r = this;
-  r[e] !== void 0 && I(
-    `Potential bug: Method ${e} already defined on vm and has been overwritten by $createObservableMethod.` + String(r[e]),
-    r
+  r[e] !== void 0 && ee(
+    `Potential bug: Method ${e} already defined on vm and has been overwritten by $createObservableMethod.` + String(r[e])
   );
   const n = function(o) {
     return r[e] = function() {
@@ -1190,12 +1179,12 @@ function ar(e, t) {
       delete r[e];
     };
   };
-  return new y(n).pipe(tr());
+  return new y(n).pipe(er());
 }
-function fr(e) {
-  de(e), e.mixin(nr), e.directive("stream", or), e.prototype.$watchAsObservable = ir, e.prototype.$fromDOMEvent = sr, e.prototype.$subscribeTo = ur, e.prototype.$eventToObservable = cr, e.prototype.$createObservableMethod = ar, e.config.optionMergeStrategies.subscriptions = e.config.optionMergeStrategies.data;
+function cr(e) {
+  e.mixin(rr), e.directive("stream", tr), e.config.globalProperties.$watchAsObservable = nr, e.config.globalProperties.$fromDOMEvent = or, e.config.globalProperties.$subscribeTo = ir, e.config.globalProperties.$eventToObservable = sr, e.config.globalProperties.$createObservableMethod = ur, e.config.optionMergeStrategies.subscriptions = e.config.optionMergeStrategies.data;
 }
-typeof Vue < "u" && Vue.use(fr);
+typeof Vue < "u" && Vue.use(cr);
 export {
-  fr as default
+  cr as default
 };

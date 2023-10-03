@@ -6,7 +6,6 @@ export let warn = function () {}
 // be better to just import and use Vue directly?
 export function install (_Vue) {
   Vue = _Vue
-  warn = Vue.util.warn || warn
 }
 
 // TODO(benlesh): as time passes, this should be updated to use RxJS 6.1's
@@ -25,7 +24,7 @@ export function defineReactive (vm, key, val) {
   if (key in vm) {
     vm[key] = val
   } else {
-    Vue.util.defineReactive(vm, key, val)
+    // Vue.util.defineReactive(vm, key, val)
   }
 }
 

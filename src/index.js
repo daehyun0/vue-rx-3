@@ -13,11 +13,11 @@ export default function VueRx (Vue) {
   install(Vue)
   Vue.mixin(rxMixin)
   Vue.directive('stream', streamDirective)
-  Vue.prototype.$watchAsObservable = watchAsObservable
-  Vue.prototype.$fromDOMEvent = fromDOMEvent
-  Vue.prototype.$subscribeTo = subscribeTo
-  Vue.prototype.$eventToObservable = eventToObservable
-  Vue.prototype.$createObservableMethod = createObservableMethod
+  Vue.config.globalProperties.$watchAsObservable = watchAsObservable
+  Vue.config.globalProperties.$fromDOMEvent = fromDOMEvent
+  Vue.config.globalProperties.$subscribeTo = subscribeTo
+  Vue.config.globalProperties.$eventToObservable = eventToObservable
+  Vue.config.globalProperties.$createObservableMethod = createObservableMethod
   Vue.config.optionMergeStrategies.subscriptions = Vue.config.optionMergeStrategies.data
 }
 
